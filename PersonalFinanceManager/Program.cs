@@ -28,7 +28,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection(); // Redirect HTTP requests to HTTPS
+app.UseHttpsRedirection();// Redirect HTTP requests to HTTPS
+
 app.UseStaticFiles(); // Serve static files
 app.UseRouting(); // Enable routing
 app.UseAuthentication(); // Enable authentication

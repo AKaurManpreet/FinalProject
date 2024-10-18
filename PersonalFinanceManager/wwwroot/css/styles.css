@@ -1,0 +1,185 @@
+:root {
+    --primary: #4a4a4a;
+    --accent: #a0a0a0;
+    --darkBg: #1c1c1c;
+    --textLight: #e0e0e0;
+    --highlight: #ff5722;
+    --borderColor: #333333;
+    --boxShadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    background-color: var(--darkBg);
+    color: var(--textLight);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+header {
+    border-bottom: 2px solid var(--accent);
+    width: 100%;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%; /* Full width */
+    background-color: var(--darkBg);
+    border: 1px solid var(--borderColor);
+    border-radius: 8px;
+    box-shadow: var(--boxShadow);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+button {
+    background-color: var(--accent);
+    color: var(--darkBg);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: var(--primary);
+    transform: scale(1.05);
+}
+
+footer {
+    border-top: 2px solid var(--accent);
+    padding: 10px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    background-color: var(--primary);
+    padding: 10px;
+}
+
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid var(--borderColor);
+}
+
+tbody tr:hover {
+    background-color: var(--accent);
+    color: var(--darkBg);
+}
+nav {
+    background-color: var(--primary);
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+}
+
+nav ul li {
+    margin-right: 20px;
+    position: relative; /* For positioning the pseudo-element */
+}
+
+nav ul li a {
+    color: var(--textLight);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: var(--highlight);
+    color: var(--darkBg); /* Change text color on hover */
+}
+
+.active-tab {
+    background-color: var(--highlight);
+    color: var(--darkBg);
+}
+
+nav ul li::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--highlight);
+    position: absolute;
+    bottom: -4px; /* Adjust the position below the link */
+    left: 0;
+    transform: scaleX(0); /* Start with no width */
+    transition: transform 0.3s ease;
+}
+
+nav ul li:hover::after {
+    transform: scaleX(1); /* Expand underline on hover */
+}
+.bg-primary {
+    background-color: var(--primary);
+}
+.bg-highlight {
+    background-color: var(--highlight);
+}
+.hover\:bg-accent:hover {
+    background-color: var(--accent);
+}
+
+.text-darkBg {
+    color: var(--darkBg);
+}
+
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.rounded {
+    border-radius: 0.25rem;
+}
+
+
+.text-textLight {
+    color: var(--textLight);
+}
+
+.text-accent {
+    color: var(--highlight);
+}
+
+.pass-worng{
+    font-size: 8px;
+}

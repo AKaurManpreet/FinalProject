@@ -1,0 +1,26 @@
+@page "{id:int}"
+@model PersonalFinanceManager.Pages.Expenses.EditModel
+@using System.Security.Claims
+
+<h2>Edit Expense</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Expense.Id" />
+    <input type="hidden" asp-for="Expense.UserId" value="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value" />
+    <div>
+        <label asp-for="Expense.Description"></label>
+        <input asp-for="Expense.Description" />
+        <span asp-validation-for="Expense.Description"></span>
+    </div>
+    <div>
+        <label asp-for="Expense.Amount"></label>
+        <input asp-for="Expense.Amount" />
+        <span asp-validation-for="Expense.Amount"></span>
+    </div>
+    <div>
+        <label asp-for="Expense.Date"></label>
+        <input asp-for="Expense.Date" />
+        <span asp-validation-for="Expense.Date"></span>
+    </div>
+    <button type="submit">Save</button>
+</form>

@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PersonalFinanceManager.Models
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Personal Finance Manager</title>
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/script.js"></script>
+</head>
+<body>
+    <header class="bg-primary p-4 text-white">
+        
+        <nav>
+            <ul class="flex space-x-4">
+                <li><a asp-page="/Index" class="text-light">Home</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a asp-page="/Expenses/Index" class="text-light">Expenses</a></li>
+                    <li><a asp-page="/Budgets/Index" class="text-light">Budgets</a></li>
+                    <li>
+                        <form method="post" asp-page="/Account/Logout">
+                            <button type="submit" class="text-light">Logout</button>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    <li><a asp-page="/Account/Login" class="text-light">Login</a></li>
+                    <li><a asp-page="/Account/Register" class="text-light">Register</a></li>
+                }
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main class="p-4">
+        @RenderBody()
+    </main>
+
+    <footer class="bg-darkBg text-light text-center p-4">
+        &copy; 2024 Personal Finance Manager
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,21 @@
+@page "{id:int}"
+@model PersonalFinanceManager.Pages.Budgets.EditModel
+@using System.Security.Claims
+
+<h2>Edit Budget</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Budget.Id" />
+    <input type="hidden" asp-for="Budget.UserId" value="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value" />
+    <div>
+        <label asp-for="Budget.Category"></label>
+        <input asp-for="Budget.Category" />
+        <span asp-validation-for="Budget.Category"></span>
+    </div>
+    <div>
+        <label asp-for="Budget.Amount"></label>
+        <input asp-for="Budget.Amount" />
+        <span asp-validation-for="Budget.Amount"></span>
+    </div>
+    <button type="submit">Save</button>
+</form>

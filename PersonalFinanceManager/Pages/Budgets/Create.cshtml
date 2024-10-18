@@ -1,0 +1,23 @@
+@page
+@model PersonalFinanceManager.Pages.Budgets.CreateModel
+@using System.Security.Claims
+
+<div class="container mx-auto p-6">
+    <h2 class="text-3xl font-bold text-primary mb-4">Add New Budget</h2>
+    <form method="post" class="bg-darkBg p-6 rounded-lg shadow-lg">
+        <input type="hidden" asp-for="Budget.UserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
+        <div class="mb-4">
+            <label class="block text-textLight">Category</label>
+            <input type="text" asp-for="Budget.Category" class="w-full p-2 rounded" />
+            <span asp-validation-for="Budget.Category" class="text-red-500"></span>
+        </div>
+        <div class="mb-4">
+            <label class="block text-textLight">Amount</label>
+            <input type="number" asp-for="Budget.Amount" class="w-full p-2 rounded" />
+            <span asp-validation-for="Budget.Amount" class="text-red-500"></span>
+        </div>
+        <button type="submit" class="bg-primary hover:bg-accent text-darkBg px-4 py-2 rounded">
+            Add Budget
+        </button>
+    </form>
+</div>

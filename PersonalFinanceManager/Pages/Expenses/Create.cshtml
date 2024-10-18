@@ -1,0 +1,31 @@
+@page
+@model PersonalFinanceManager.Pages.Expenses.CreateModel
+@using System.Security.Claims
+
+<div class="container mx-auto p-6">
+    <h2 class="text-3xl font-bold text-primary mb-4">Add New Expense</h2>
+    <form method="post" class="bg-darkBg p-6 rounded-lg shadow-lg">
+        <div class="mb-4">
+            <label class="block text-textLight">User ID</label>
+        </div>
+        <input type="hidden" asp-for="Expense.UserId" value="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value" />
+        <div class="mb-4">
+            <label class="block text-textLight">Description</label>
+            <input type="text" asp-for="Expense.Description" class="w-full p-2 rounded" />
+            <span asp-validation-for="Expense.Description" class="text-red-500"></span>
+        </div>
+        <div class="mb-4">
+            <label class="block text-textLight">Amount</label>
+            <input type="number" asp-for="Expense.Amount" class="w-full p-2 rounded" />
+            <span asp-validation-for="Expense.Amount" class="text-red-500"></span>
+        </div>
+        <div class="mb-4">
+            <label class="block text-textLight">Date</label>
+            <input type="date" asp-for="Expense.Date" class="w-full p-2 rounded" />
+            <span asp-validation-for="Expense.Date" class="text-red-500"></span>
+        </div>
+        <button type="submit" class="bg-primary hover:bg-accent text-darkBg px-4 py-2 rounded">
+            Add Expense
+        </button>
+    </form>
+</div>

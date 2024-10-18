@@ -1,0 +1,42 @@
+@page
+@model PersonalFinanceManager.Pages.Expenses.IndexModel
+@using System.Security.Claims
+
+<div class="container">
+    <h2 class="text-3xl font-bold text-primary mb-4">Expenses</h2>
+    <div class="mb-4">
+        <a asp-page="./Create" class="bg-highlight hover:bg-accent text-darkBg px-4 py-2 rounded">Add New Expense</a>
+    </div>
+    <table class="min-w-full bg-darkBg text-textLight">
+        <thead>
+            <tr class="bg-secondary text-darkBg">
+                <th class="py-2 px-4">Description</th>
+                <th class="py-2 px-4">Amount</th>
+                <th class="py-2 px-4">Date</th>
+                <th class="py-2 px-4">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Expenses != null && Model.Expenses.Count > 0)
+            {
+                @foreach (var expense in Model.Expenses)
+                {
+                    <tr class="border-b border-secondary">
+                        <td class="py-2 px-4">@expense.Description</td>
+                        <td class="py-2 px-4">@expense.Amount.ToString("C")</td>
+                        <td class="py-2 px-4">@expense.Date.ToShortDateString()</td>
+                        <td class="py-2 px-4">
+                            <a asp-page="./Edit" asp-route-id="@expense.Id" class="text-accent hover:text-accentDark">Edit</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="py-4 text-center">No expenses found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

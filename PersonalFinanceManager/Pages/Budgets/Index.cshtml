@@ -1,0 +1,40 @@
+@page
+@model PersonalFinanceManager.Pages.Budgets.IndexModel
+
+<div class="container mx-auto p-6">
+    <h2 class="text-3xl font-bold text-primary mb-4">Budgets</h2>
+    <div class="mb-4">
+        <a asp-page="./Create" class="bg-highlight hover:bg-accent text-darkBg px-4 py-2 rounded">Add New Budget</a>
+    </div>
+    <table class="min-w-full bg-darkBg text-textLight">
+        <thead>
+            <tr>
+                <th class="py-2">Category</th>
+                <th class="py-2">Amount</th>
+                <th class="py-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Budgets != null && Model.Budgets.Count > 0)
+            {
+                foreach (var budget in Model.Budgets)
+                {
+                    <tr>
+                        <td class="py-2">@budget.Category</td>
+                        <td class="py-2">@budget.Amount</td>
+                        <td class="py-2">
+                            <a asp-page="./Edit" asp-route-id="@budget.Id" class="text-accent">Edit</a>
+                        </td>
+
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3" class="py-2 text-center">No budgets found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
